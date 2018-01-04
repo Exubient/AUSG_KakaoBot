@@ -35,6 +35,7 @@ $ git clone https://github.com/Exubient/AUSG_KakaoBot
 ## Django
 * requirement 설정
 ```bash
+$ cd AUSG_KakaoBot
 $ sudo pip install -r requirements
 ```
 
