@@ -11,9 +11,7 @@
 * Cost-saving setting은 4시간 후 설정
 * Create! 하면 조금 시간이 걸립니다...
 ```bash
-
 $ git clone https://github.com/Exubient/AUSG_KakaoBot
-
 ```
 
 ## AWS Elastic IP (고정아이피 할당)
@@ -37,18 +35,13 @@ $ git clone https://github.com/Exubient/AUSG_KakaoBot
 ## Django
 * requirement 설정
 ```bash
-
 $ sudo pip install -r requirements
-
 ```
 
 * kakao/kakao/settings.py
 ```
-
 ALLOWED_HOSTS = ['*']
-
 INSTALLED_APPS = ['alpaca'] #추가
-
 ```
 
 * kakao/urls.py
@@ -57,19 +50,16 @@ from alpaca import views
 
 url(r'^keyboard/', views.keyboard),
 url(r'^message', views.answer),
-
 ```
 
 * kakao/alpaca/views.py
 ** 카톡 플러스친구 API TEST Function
 ```
-
 def keyboard(request):
 	return JsonResponse({
 		'type' : 'buttons',
 		'buttons' : ['Coinone', 'Bithumb', 'Bitfinex']
 		})
-
 ```
 
 ** 응답을 위한 Main Function
@@ -170,5 +160,4 @@ $ python manage.py runserver 0:8000
 ## 파괴하기
 * EC2 파괴
 * 카톡 플러스친구 파괴
-
 
