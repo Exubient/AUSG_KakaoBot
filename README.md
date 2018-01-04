@@ -56,26 +56,31 @@ url(r'^message', views.answer),
 * kakao/alpaca/views.py
 * 카톡 플러스친구 API TEST Function
 ```
+ret ={}
 def keyboard(request):
-	return JsonResponse({
-		'type' : 'buttons',
-		'buttons' : ['Coinone', 'Bithumb', 'Bitfinex']
-		})
+    return JsonResponse({
+        'type' : 'buttons',
+        'buttons' : ['Coinone', 'Bithumb', 'Bitfinex']
+    })
+	
 ```
 
 * 응답을 위한 Main Function
 ```
+
 @csrf_exempt
 def answer(request):
     json_str = ((request.body).decode('utf-8'))
     received_json_data = json.loads(json_str)
     returnButton = received_json_data['content']
+    _dict = ast.literal_eval(json_str)
     with open(r'coin.csv', 'r') as f:
         reader = csv.reader(f)
         for row in reader:
             info = row[0].split("-")
-            ret = info[0]
-            if info[0] == returnButton:
+            if(returnButton == info[0]):
+                global ret
+                ret[_dict["user_key"]] = info[0]
                 return JsonResponse({
                     'message': {
                         'text': "you have selected " + returnButton
@@ -86,8 +91,8 @@ def answer(request):
                     }
 
                 })
-            if info[1] == returnButton and ret == info[0]: 
-                ret = ""
+                
+            if(returnButton == info[1] and ret[_dict["user_key"]] == info[0]):
                 return JsonResponse({
                     'message': {
                         'text': row[1]
