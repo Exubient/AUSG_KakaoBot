@@ -29,8 +29,8 @@ $ git clone https://github.com/Exubient/AUSG_KakaoBot
 * pwd 현재 디렉토리
 * cd 파일/.. 디렉토리 이동
 * vim 파일 편집
-** i를 누르면 편집기능
-** :w 저장 :q종료 :wq 저장+종료
+* i를 누르면 편집기능
+* :w 저장 :q종료 :wq 저장+종료
 
 ## Django
 * requirement 설정
@@ -53,7 +53,7 @@ url(r'^message', views.answer),
 ```
 
 * kakao/alpaca/views.py
-** 카톡 플러스친구 API TEST Function
+* 카톡 플러스친구 API TEST Function
 ```
 def keyboard(request):
 	return JsonResponse({
@@ -62,7 +62,7 @@ def keyboard(request):
 		})
 ```
 
-** 응답을 위한 Main Function
+* 응답을 위한 Main Function
 ```
 @csrf_exempt
 def answer(request):
