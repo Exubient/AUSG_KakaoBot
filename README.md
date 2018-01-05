@@ -23,16 +23,18 @@ $ git clone https://github.com/Exubient/AUSG_KakaoBot
 * [Dashboard](https://aws.amazon.com/ko/)
 * 콘솔에 접근
 * Security Groups
-* Inbound -> Edit  -> Add Rules Button -> custom -> 8000 포트만 열고 -> save
-
-## 기본 Bash명령어
-* pwd 현재 디렉토리
-* cd 파일/.. 디렉토리 이동
-* vim 파일 편집
-* i를 누르면 편집기능
-* :w 저장 :q종료 :wq 저장+종료
+* Inbound -> Edit  -> Add Rules Button -> custom -> 8000, 8080 열기 -> save
 
 ## Django
+* Bash에서 상위 디렉토리 이동
+```bash
+$ cd AUSG_KakaoBot 
+```
+* Bash에서 하위 디렉토리 이동
+```bash
+$ cd .. 
+```
+
 * requirement 설정
 ```bash
 $ cd AUSG_KakaoBot
@@ -56,7 +58,6 @@ url(r'^message', views.answer),
 * kakao/alpaca/views.py
 * 카톡 플러스친구 API TEST Function
 ```
-ret ={}
 def keyboard(request):
     return JsonResponse({
         'type' : 'buttons',
@@ -67,7 +68,7 @@ def keyboard(request):
 
 * 응답을 위한 Main Function
 ```
-
+ret={}
 @csrf_exempt
 def answer(request):
     json_str = ((request.body).decode('utf-8'))
@@ -95,7 +96,7 @@ def answer(request):
             if(returnButton == info[1] and ret[_dict["user_key"]] == info[0]):
                 return JsonResponse({
                     'message': {
-                        'text': row[1]
+                        'text': row[1]+info[2]
                      },
                     'keyboard':{
                         'type': 'buttons',
@@ -108,12 +109,6 @@ def answer(request):
 
 * kakao/coin.py
 ```
-import requests
-import json
-import csv
-import os
-import datetime
-from apscheduler.schedulers.blocking import BlockingScheduler
 
 def fetch_cryptocompare():
 	coins = {'BTC','ETH', 'XRP'}
