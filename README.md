@@ -109,7 +109,6 @@ def answer(request):
 
 * kakao/coin.py
 ```
-
 def fetch_cryptocompare():
 	coins = {'BTC','ETH', 'XRP'}
 	exchanges = {'Coinone':'KRW', 'Bithumb':'KRW', 'Bitfinex':'USD'}
@@ -143,6 +142,7 @@ def scheduler():
     sched.start()
 
 scheduler()
+
 ```
 * runserver kakao/manage.py
 ```bash
