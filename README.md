@@ -1,5 +1,5 @@
 # Python으로 비트코인 챗봇 만들기
-### 초보자를 위한 AWS 뿌시기 세미나 1일차 강의 자료
+###### 초보자를 위한 AWS 뿌시기 세미나 1일차 강의 자료
 
 ## AWS Free Tier 가입하기
 * https://aws.amazon.com/free/
