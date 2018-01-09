@@ -4,7 +4,7 @@
 
 ## C9
 * https://aws.amazon.com/ko/cloud9/
-* 싱가폴 리전 
+* 싱가폴 리전 선택
 * AWS Cloud9 시작하기 버튼 -> 클릭
 * Create Environment 버튼 -> 클릭
 * Create a new instance for environment (EC2 설정) -> Instance Type은 t2.micro설정
@@ -69,19 +69,21 @@ def keyboard(request):
 * 응답을 위한 Main Function
 ```
 ret={}
-@csrf_exempt
+@csrf_exempt #보안 Middleware
 def answer(request):
     json_str = ((request.body).decode('utf-8'))
     received_json_data = json.loads(json_str)
     returnButton = received_json_data['content']
     _dict = ast.literal_eval(json_str)
-    with open(r'coin.csv', 'r') as f:
-        reader = csv.reader(f)
+    with open(r'coin.csv', 'r') as f: #저장돼있는 코인 가격정보 읽어오기
+        reader = csv.reader(f)
         for row in reader:
-            info = row[0].split("-")
-            if(returnButton == info[0]):
-                global ret
-                ret[_dict["user_key"]] = info[0]
+            info = row[0].split("-") #info[0] == 시장 / info[1] == 코인종류 / info[2] == 화폐단위
+	    
+	    #첫번째로 보일 키보드
+            if(returnButton == info[0]):
+                global ret # state를 저장할  수 있는 변수 선언
+                ret[_dict["user_key"]] = info[0]
                 return JsonResponse({
                     'message': {
                         'text': "you have selected " + returnButton
@@ -92,8 +94,8 @@ def answer(request):
                     }
 
                 })
-                
-            if(returnButton == info[1] and ret[_dict["user_key"]] == info[0]):
+            #두번쨰로 보일 키보드
+            if(returnButton == info[1] and ret[_dict["user_key"]] == info[0]):
                 return JsonResponse({
                     'message': {
                         'text': row[1]+info[2]
@@ -110,25 +112,26 @@ def answer(request):
 * kakao/coin.py
 ```
 def fetch_cryptocompare():
-	coins = {'BTC','ETH', 'XRP'}
-	exchanges = {'Coinone':'KRW', 'Bithumb':'KRW', 'Bitfinex':'USD'}
+	coins = {'BTC','ETH', 'XRP'} #가격정보를 원하는 코인 종류/ Set
+	exchanges = {'Coinone':'KRW', 'Bithumb':'KRW', 'Bitfinex':'USD'} #정보를 받아올 시장 / Dictionary
 	_dict = {}
 	cur = datetime.datetime.now()
 	timestamp = cur.strftime('%Y-%m-%d-%H:%M')
-	_dict["Time"] = timestamp
+	_dict["Time"] = timestamp #날짜를 저장 
 
 	for market,currency in exchanges.items():
 		url = 'https://min-api.cryptocompare.com/data/pricemulti?fsyms=%s&tsyms=%s&e=%s' % (','.join(coins), currency, market)
 		response = requests.get(url)
 		data = response.json()
-
-		for coin in coins:
+		
+		#_dict라는 dictionary에 저장
+		for coin in coins: 
 			if response.status_code == requests.codes.ok:
 				_dict[market+'-'+coin+'-'+currency] = data[coin][currency] #data['ETH']['KRW']
 			else:
 				_dict[market+'-'+coin+'-'+currency] = -1
 
-
+	#_dict에 저장된 정보를 coin.csv파일에 저장.
 	with open(r'coin.csv', 'w') as f:
 		writer = csv.writer(f)
 		for key, value in _dict.items():
@@ -138,8 +141,8 @@ def fetch_cryptocompare():
 def scheduler():
     sched = BlockingScheduler()
     sched.configure(timezone='Asia/Seoul')
-    sched.add_job(fetch_cryptocompare, 'interval', minutes=1)
-    sched.start()
+    sched.add_job(fetch_cryptocompare, 'interval', minutes=1) #매분 돌아가게 
+    sched.start()
 
 scheduler()
 
