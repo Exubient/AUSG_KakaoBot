@@ -1,3 +1,5 @@
+#초보자를 위한 AWS 뿌시기 세미나 1일차 강의 자료
+
 ## AWS Free Tier 가입하기
 * https://aws.amazon.com/free/
 * 무료 계정 생성
