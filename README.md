@@ -13,6 +13,7 @@
     - 모든 가입 정보들은 **영문** 으로 작성되어야 합니다.
 ## C9
 ![c9](https://i.imgur.com/rzZMKYN.png)
+
 AWS Cloud9은 인터넷만 연결되어 있다면 웹 브라우저상으로 코드 작성 및 실행, 디버깅을 할 수 있는 클라우드 기반의 통합 개발 환경(IDE)를 의미합니다.
 **Ctrl + 왼쪽마우스 클릭!**
 **https://aws.amazon.com/ko/cloud9/**
@@ -30,6 +31,7 @@ AWS Cloud9은 인터넷만 연결되어 있다면 웹 브라우저상으로 코�
 ![스크린샷, 2018-01-10 20-49-26](https://i.imgur.com/5ivNdsk.png)
 * Cost-saving setting은 4시간 후 설정
 * Create! 하면 조금 시간이 걸립니다...
+    * 이때, 자동으로 EC2가 생성됩니다.
 ```bash
 $ git clone https://github.com/Exubient/AUSG_KakaoBot
 ```
@@ -44,87 +46,88 @@ $ git clone https://github.com/Exubient/AUSG_KakaoBot
 * 콘솔에 접근  -> EC2 -> NETWORK & SECURITY탭
 * Security Groups
 * Inbound -> Edit  -> Add Rules Button -> custom -> 8000, 8080 열기 -> save
-
+![inbound](https://i.imgur.com/MLrtqy2.png)
+![스크린샷, 2018-01-10 21-30-51](https://i.imgur.com/1T7SqP1.png)
 ### 참고 명령어
 
 * Bash에서 상위 디렉토리 이동
-```bash
-$ cd AUSG_KakaoBot
-```
+    ```bash
+    $ cd AUSG_KakaoBot
+    ```
 * Bash에서 하위 디렉토리 이동
-```bash
-$ cd ..
-```
+    ```bash
+    $ cd ..
+    ```
 
 ## Django
 * requirement 설정
-```bash
-$ cd AUSG_KakaoBot
-$ sudo pip install -r requirements
-```
+    ```bash
+    $ cd AUSG_KakaoBot
+    $ sudo pip install -r requirements
+    ```
 
 * kakao/kakao/settings.py
-```
-ALLOWED_HOSTS = ['*']
-INSTALLED_APPS = ['alpaca'] #추가
-```
+    ```
+    ALLOWED_HOSTS = ['*']
+    INSTALLED_APPS = ['alpaca'] # 추가
+    ```
 
 * kakao/urls.py
-```
-from alpaca import views
+    ```
+    from alpaca import views
 
-url(r'^keyboard/', views.keyboard),
-url(r'^message', views.answer),
-```
+    url(r'^keyboard/', views.keyboard),
+    url(r'^message', views.answer),
+    ```
 
 * kakao/alpaca/views.py
 * 카톡 플러스친구 API TEST Function
-```
-def keyboard(request):
-    return JsonResponse({
-        'type' : 'buttons',
-        'buttons' : ['Coinone', 'Bithumb', 'Bitfinex']
-    })
-```
+    ```
+    def keyboard(request):
+        return JsonResponse({
+            'type' : 'buttons',
+            'buttons' : ['Coinone', 'Bithumb', 'Bitfinex']
+        })
+    ```
 
 * 응답을 위한 Main Function
-```
-ret={}
-@csrf_exempt #보안 Middleware
-def answer(request):
-    pass
+    ```
+    ret={}
+    @csrf_exempt #보안 Middleware
+    def answer(request):
+        pass
 
-    #첫번째로 보일 키보드
-    #두번쨰로 보일 키보드
-```
+        # 첫번째로 보일 키보드
+        # 두번쨰로 보일 키보드
+    ```
 
 * AUSG_KakaoBot/coin.py
-```
-def fetch_cryptocompare():
-	pass
+    ```
+    def fetch_cryptocompare():
+    	pass
 
-	#가격정보를 원하는 코인 종류/ Set
-	#정보를 받아올 시장 / Dictionary
-	#날짜를 저장
-	#_dict에 저장된 정보를 coin.csv파일에 저장.
-	print("Success")
+    	# 가격정보를 원하는 코인 종류/ Set
+    	# 정보를 받아올 시장 / Dictionary
+    	# 날짜를 저장
+    	# _dict에 저장된 정보를 coin.csv파일에 저장.
+    	print("Success")
 
-def scheduler():
-	pass
+    def scheduler():
+    	pass
 
-	#fetch_cryptocompare() 매 분마다 돌리기
+    	# fetch_cryptocompare() 매 분마다 돌리기
 
-scheduler()
-```
+    scheduler()
+    ```
 * runserver kakao/manage.py
-```bash
-$ python manage.py migrate
-$ python coin.py // 터미널창 추가해서 돌려놓기
-$ python manage.py runserver 0:8000
-```
+    ```bash
+    $ python manage.py migrate
+    $ python coin.py // 터미널창 추가해서 돌려놓기
+    $ python manage.py runserver 0:8000
+    ```
 
 #### 만약 SyntaxError: Non-ASCII character '\xec' in file 에러가 난다면?
-파이썬 코드 맨 위
+파이썬 코드 맨 위에 아래 코드를 기입합니다.
 ```
 # -*- coding: utf-8 -*-
 ```
