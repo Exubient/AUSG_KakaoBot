@@ -155,6 +155,7 @@ $ git clone https://github.com/Exubient/AUSG_KakaoBot
 
 ## EC2는 뭔가요?
 ![ec2](https://i.imgur.com/C0NbEDT.png)
+
 EC2는 Elatic Compute Cloud의 약자로, AWS가 제공하는 서비스 중 대표 상품입니다. EC2를 생성해 실제로 보고 만질 수 없는 `가상 서버`를 만들 수 있습니다.
 
 ![스크린샷, 2018-01-10 21-05-58](https://i.imgur.com/jPvCHqG.png)
