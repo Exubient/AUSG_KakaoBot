@@ -19,16 +19,17 @@ $ git clone https://github.com/Exubient/AUSG_KakaoBot
 
 ## AWS Elastic IP (고정아이피 할당)
 * [Dashboard](https://aws.amazon.com/ko/)
-* 내계정 -> AWS Management Console
-* NETWORK & SECURITY탭 -> Elastic Ips -> Allocate new address -> Allocates -> 이미 생성한 인스턴스에 붙임
+* 내계정 -> AWS Management Console-> EC2
+* NETWORK & SECURITY탭 -> Elastic Ips -> Allocate new address -> Allocates -> 작업-> 주소연결
 
 ## AWS Inbound 열기
 * [Dashboard](https://aws.amazon.com/ko/)
-* 콘솔에 접근
+* 콘솔에 접근  -> EC2 -> NETWORK & SECURITY탭
 * Security Groups
 * Inbound -> Edit  -> Add Rules Button -> custom -> 8000, 8080 열기 -> save
 
-## Django
+##참고 명령어
+
 * Bash에서 상위 디렉토리 이동
 ```bash
 $ cd AUSG_KakaoBot 
@@ -38,6 +39,7 @@ $ cd AUSG_KakaoBot
 $ cd .. 
 ```
 
+## Django
 * requirement 설정
 ```bash
 $ cd AUSG_KakaoBot
