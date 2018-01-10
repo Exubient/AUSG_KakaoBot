@@ -28,7 +28,7 @@ $ git clone https://github.com/Exubient/AUSG_KakaoBot
 * Security Groups
 * Inbound -> Edit  -> Add Rules Button -> custom -> 8000, 8080 열기 -> save
 
-## 참고 명령어
+### 참고 명령어
 
 * Bash에서 상위 디렉토리 이동
 ```bash
