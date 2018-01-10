@@ -28,7 +28,7 @@ $ git clone https://github.com/Exubient/AUSG_KakaoBot
 * Security Groups
 * Inbound -> Edit  -> Add Rules Button -> custom -> 8000, 8080 열기 -> save
 
-##참고 명령어
+## 참고 명령어
 
 * Bash에서 상위 디렉토리 이동
 ```bash
@@ -158,7 +158,7 @@ $ python manage.py migrate
 $ python manage.py runserver 0:8000
 ```
 
-# 만약 SyntaxError: Non-ASCII character '\xec' in file 에러가 난다면?
+#### 만약 SyntaxError: Non-ASCII character '\xec' in file 에러가 난다면?
 파이썬 코드 맨 위
 ```
 # -*- coding: utf-8 -*- 
