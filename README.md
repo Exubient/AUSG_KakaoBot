@@ -155,6 +155,7 @@ scheduler()
 * runserver kakao/manage.py
 ```bash
 $ python manage.py migrate
+$ python coin.py // 터미널창 추가해서 돌려놓기
 $ python manage.py runserver 0:8000
 ```
 
@@ -172,6 +173,7 @@ $ python manage.py runserver 0:8000
 * 스마트채팅 -> API형 설정하기 -> http://엘라스틱 탄력적ip주소:8000 -> Api Test
 * 알림받을 전화번호 -> 자기 전화번호 입력 -> 인증 -> 시작!
 * 휴대폰으로 플러스친구 검색 -> 테스트 ㅎㅎ 
+
 
 ## 파괴하기
 * EC2 파괴
