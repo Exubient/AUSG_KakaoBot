@@ -2,6 +2,7 @@
 ###### 초보자를 위한 AWS 뿌시기 세미나 1일차 강의 자료
 
 ## AWS Free Tier 가입하기
+![스크린샷, 2018-01-10 20-23-00](https://i.imgur.com/MTm3XV4.png)
 * https://aws.amazon.com/free/
 * 무료 계정 생성
 
@@ -32,11 +33,11 @@ $ git clone https://github.com/Exubient/AUSG_KakaoBot
 
 * Bash에서 상위 디렉토리 이동
 ```bash
-$ cd AUSG_KakaoBot 
+$ cd AUSG_KakaoBot
 ```
 * Bash에서 하위 디렉토리 이동
 ```bash
-$ cd .. 
+$ cd ..
 ```
 
 ## Django
@@ -68,7 +69,7 @@ def keyboard(request):
         'type' : 'buttons',
         'buttons' : ['Coinone', 'Bithumb', 'Bitfinex']
     })
-	
+
 ```
 
 * 응답을 위한 Main Function
@@ -77,27 +78,27 @@ ret={}
 @csrf_exempt #보안 Middleware
 def answer(request):
     pass
-    
+
     #첫번째로 보일 키보드
     #두번쨰로 보일 키보드
 
-    
+
 ```
 
 * AUSG_KakaoBot/coin.py
 ```
 def fetch_cryptocompare():
 	pass
-	
+
 	#가격정보를 원하는 코인 종류/ Set
 	#정보를 받아올 시장 / Dictionary
-	#날짜를 저장 
+	#날짜를 저장
 	#_dict에 저장된 정보를 coin.csv파일에 저장.
 	print("Success")
 
 def scheduler():
 	pass
-	
+
 	#fetch_cryptocompare() 매분돌리기
 
 scheduler()
@@ -113,7 +114,7 @@ $ python manage.py runserver 0:8000
 #### 만약 SyntaxError: Non-ASCII character '\xec' in file 에러가 난다면?
 파이썬 코드 맨 위
 ```
-# -*- coding: utf-8 -*- 
+# -*- coding: utf-8 -*-
 ```
 
 ## KaKao
@@ -123,10 +124,9 @@ $ python manage.py runserver 0:8000
 * 관리 -> 공개설정
 * 스마트채팅 -> API형 설정하기 -> http://엘라스틱 탄력적ip주소:8000 -> Api Test
 * 알림받을 전화번호 -> 자기 전화번호 입력 -> 인증 -> 시작!
-* 휴대폰으로 플러스친구 검색 -> 테스트 ㅎㅎ 
+* 휴대폰으로 플러스친구 검색 -> 테스트 ㅎㅎ
 
 
 ## 파괴하기
 * EC2 파괴
 * 카톡 플러스친구 파괴
-
