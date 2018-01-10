@@ -114,7 +114,7 @@ def answer(request):
     
 ```
 
-* kakao/coin.py
+* AUSG_KakaoBot/coin.py
 ```
 def fetch_cryptocompare():
 	coins = {'BTC','ETH', 'XRP'} #가격정보를 원하는 코인 종류/ Set
@@ -157,6 +157,13 @@ scheduler()
 $ python manage.py migrate
 $ python manage.py runserver 0:8000
 ```
+
+# 만약 SyntaxError: Non-ASCII character '\xec' in file 에러가 난다면?
+파이썬 코드 맨 위
+```
+# -*- coding: utf-8 -*- 
+```
+
 ## KaKao
 * [플러스친구 관리자 센터](https://center-pf.kakao.com/signup)
 * 가입 (핸드폰 인증 필요)
