@@ -141,7 +141,7 @@ $ git clone https://github.com/Exubient/AUSG_KakaoBot
 ![스크린샷, 2018-01-10 21-23-46](https://i.imgur.com/2X0xgQ1.png)
 * 알림받을 전화번호 -> 자기 전화번호 입력 -> 인증 -> 시작!
 
-* 휴대폰으로 플러스친구 검색 -> 테스트 ㅎㅎ
+* 휴대폰으로 플러스친구 검색 -> 테스트시작
 ![스크린샷, 2018-01-10 21-24-25](https://i.imgur.com/BRYVu3x.png)
 
 
